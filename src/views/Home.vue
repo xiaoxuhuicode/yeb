@@ -46,7 +46,7 @@
                     欢迎来到云E办系统！
                 </div>
                 <!-- 路由 -->
-                <router-view />
+                <router-view class="homeRouterView"/>
             </el-main>
         </el-container>
 
