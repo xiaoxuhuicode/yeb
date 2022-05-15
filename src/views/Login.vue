@@ -73,7 +73,6 @@
                             // alert(JSON.stringify(resp)); // 打印查看返回json对象
                             this.loading = false; // 关闭loading
                             if (resp) {
-                                console.log(JSON.stringify(resp));
                                 // 拼接登录成功后返回的 tokenHead 和 token
                                 const tokenStr = resp.object.tokenHead + resp.object.token;
                                 // 存储用户token，就可以在api.js的请求拦截器的config中获取了
@@ -81,7 +80,8 @@
                                 //清空菜单
                                 this.$store.commit('initRoutes', []);
                                 // 页面跳转，处理未登录访问其他页面的问题
-                                this.$router.replace('/home');
+                                let path = this.$route.query.redirect;
+                                this.$router.replace((path == '/' || path == undefined) ? '/home' : path)
                             }
                         });
                     } else {

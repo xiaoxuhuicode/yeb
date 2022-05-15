@@ -36,15 +36,15 @@
             </el-aside>
             <!-- Main -->
             <el-main>
-<!--                &lt;!&ndash; 面包屑 &ndash;&gt;-->
-<!--                <el-breadcrumb separator-class="el-icon-arrow-right"-->
-<!--                               v-if="this.$router.currentRoute.path!='/home'">-->
-<!--                    <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
-<!--                    <el-breadcrumb-item>{{this.$router.currentRoute.name}}</el-breadcrumb-item>-->
-<!--                </el-breadcrumb>-->
-<!--                <div class="homeWelcome" v-if="this.$router.currentRoute.path=='/home'">-->
-<!--                    欢迎来到云E办系统！-->
-<!--                </div>-->
+                <!-- 面包屑 -->
+                <el-breadcrumb separator-class="el-icon-arrow-right"
+                               v-if="this.$router.currentRoute.path!='/home'">
+                    <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+                    <el-breadcrumb-item>{{this.$router.currentRoute.name}}</el-breadcrumb-item>
+                </el-breadcrumb>
+                <div class="homeWelcome" v-if="this.$router.currentRoute.path=='/home'">
+                    欢迎来到云E办系统！
+                </div>
                 <!-- 路由 -->
                 <router-view />
             </el-main>
