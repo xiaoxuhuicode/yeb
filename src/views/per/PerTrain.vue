@@ -1,5 +1,7 @@
 <template>
-    $END$
+    <div>
+        员工培训
+    </div>
 </template>
 
 <script>

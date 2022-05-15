@@ -1,10 +1,15 @@
 <template>
-    $END$
+    <div>
+       西
+    </div>
 </template>
 
 <script>
+
+
     export default {
-        name: "SysBasic"
+        name: "SysBasic",
+
     }
 </script>
 

@@ -1,5 +1,7 @@
 <template>
-    $END$
+    <div>
+        基本资料
+    </div>
 </template>
 
 <script>

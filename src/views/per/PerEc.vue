@@ -1,5 +1,7 @@
 <template>
-    $END$
+    <div>
+        员工奖惩
+    </div>
 </template>
 
 <script>

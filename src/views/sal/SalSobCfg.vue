@@ -1,5 +1,7 @@
 <template>
-    $END$
+    <div>
+        员工账套管理
+    </div>
 </template>
 
 <script>

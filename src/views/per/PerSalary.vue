@@ -1,5 +1,7 @@
 <template>
-    $END$
+    <div>
+        员工调薪
+    </div>
 </template>
 
 <script>
