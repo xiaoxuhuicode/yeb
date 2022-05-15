@@ -31,6 +31,14 @@ router.beforeEach((to, from, next) => {
   // 通过判断存储在sessionStorage中的 tokenStr 看是否登录了
   if (window.sessionStorage.getItem('tokenStr')) {
     initMenu(router, store);
+    if(!window.sessionStorage.getItem("user")){
+      return getRequest("/admin/info").then(resp =>{
+        if(resp){
+          window.sessionStorage.setItem("user",JSON.stringify(resp));
+          next();
+        }
+      })
+    }
     next();
   } else {
       next();

@@ -1,16 +1,16 @@
 <template>
     <el-container>
         <!-- header -->
-        <el-header class="homeHeader">
-<!--            <div class="title">云E办系统</div>-->
-<!--            <el-dropdown class="userInfo" @command="commandHandler">-->
-<!--                <span class="el-dropdown-link">{{user.name}}<img :src="user.userFace"></span>-->
-<!--                <el-dropdown-menu slot="dropdown">-->
-<!--                    <el-dropdown-item command="userInfo">个人中心</el-dropdown-item>-->
-<!--                    <el-dropdown-item command="setting">设置</el-dropdown-item>-->
-<!--                    <el-dropdown-item command="logout">注销登录</el-dropdown-item>-->
-<!--                </el-dropdown-menu>-->
-<!--            </el-dropdown>-->
+        <el-header class="homeHeader" >
+            <div class="title">云E办系统</div>
+            <el-dropdown class="userInfo" @command="commandHandler">
+                <span class="el-dropdown-link">{{user.name}}<img :src="user.userFace"></span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item command="userInfo">个人中心</el-dropdown-item>
+                    <el-dropdown-item command="setting">设置</el-dropdown-item>
+                    <el-dropdown-item command="logout">注销登录</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
 
         </el-header>
 
@@ -56,34 +56,41 @@
 <script>
     export default {
         name: "Home",
-
+        data(){
+          return{
+              user:JSON.parse(window.sessionStorage.getItem("user"))
+          }
+        },
         computed: {
             routes() {
                 return this.$store.state.routes;
             }
         },
         methods: {
-            // commandHandler(command) {
-            //     if (command == 'logout') {
-            //         this.$confirm('此操作将注销登录, 是否继续?', '提示', {
-            //             confirmButtonText: '确定',
-            //             cancelButtonText: '取消',
-            //             type: 'warning'
-            //         }).then(() => { // 点击确定按钮执行这里
-            //             // 调用后台注销登录接口
-            //             this.postRequest('/logout');
-            //             // 清除浏览器sessionStorage的数据
-            //             window.sessionStorage.removeItem('tokenStr');
-            //             window.sessionStorage.removeItem('user');
-            //             // 清空vuex里存储的菜单列表数据
-            //             this.$store.commit('initRoutes', []);
-            //             // 跳转到登录页
-            //             this.$router.replace('/');
-            //         }).catch(() => { // 点击取消按钮执行这里
-            //             //
-            //         });
-            //     }
-            // }
+            commandHandler(command) {
+                if (command == 'logout') {
+                    this.$confirm('此操作将注销登录, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => { // 点击确定按钮执行这里
+                        // 调用后台注销登录接口
+                        this.postRequest('/logout');
+                        // 清除浏览器sessionStorage的数据
+                        window.sessionStorage.removeItem('tokenStr');
+                        window.sessionStorage.removeItem('user');
+                        // 清空vuex里存储的菜单列表数据
+                        this.$store.commit('initRoutes', []);
+                        // 跳转到登录页
+                        this.$router.replace('/');
+                    }).catch(() => { // 点击取消按钮执行这里
+                        this.$message({
+                            type: 'info',
+                            message: '已取消操作'
+                        })
+                    });
+                }
+            }
         }
     }
 </script>

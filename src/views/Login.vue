@@ -78,6 +78,8 @@
                                 const tokenStr = resp.object.tokenHead + resp.object.token;
                                 // 存储用户token，就可以在api.js的请求拦截器的config中获取了
                                 window.sessionStorage.setItem('tokenStr', tokenStr);
+                                //清空菜单
+                                this.$store.commit('initRoutes', []);
                                 // 页面跳转，处理未登录访问其他页面的问题
                                 this.$router.replace('/home');
                             }
