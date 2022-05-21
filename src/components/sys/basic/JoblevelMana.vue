@@ -66,7 +66,6 @@
       title="编辑职称"
       :visible.sync="dialogVisible"
       width="30%">
-      <div>
         <table>
           <tr>
             <td>
@@ -108,7 +107,6 @@
             </td>
           </tr>
         </table>
-      </div>
       <span slot="footer" class="dialog-footer">
         <el-button size="small" @click="dialogVisible = false">取 消</el-button>
         <el-button size="small" type="primary" @click="doUpdate">确 定</el-button>
@@ -158,7 +156,7 @@
           this.multipleSelection.forEach(item => {
             ids += 'ids=' + item.id + '&';
           })
-          this.deleteRequest('/system/basic/joblevel/' + ids).then(resp => {
+          this.deleteRequest('/system/basic/jobLevel/' + ids).then(resp => {
             if (resp) {
 
               this.initJls();
@@ -176,7 +174,7 @@
       },
       //修改职称
       doUpdate() {
-        this.putRequest('/system/basic/joblevel/', this.updateJl).then(resp => {
+        this.putRequest('/system/basic/jobLevel/', this.updateJl).then(resp => {
           if (resp) {
             this.initJls();
             this.updateJl.name = '';
@@ -187,6 +185,7 @@
       },
       showEditView(data) {
         Object.assign(this.updateJl, data);
+        this.updateJl.createDate='';
         this.dialogVisible = true;
       },
       deleteHandler(data) {
@@ -196,7 +195,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.deleteRequest('/system/basic/joblevel/' +
+          this.deleteRequest('/system/basic/jobLevel/' +
             data.id).then(resp => {
             if (resp) {
               this.initJls();
@@ -212,7 +211,7 @@
       addJl() {
         //添加职称
         if (this.jl.name && this.jl.titleLevel) {
-          this.postRequest('/system/basic/joblevel/', this.jl).then(resp => {
+          this.postRequest('/system/basic/jobLevel/', this.jl).then(resp => {
             if (resp) {
               this.initJls();
               this.jl.name = '';
@@ -225,7 +224,7 @@
 
       },
       initJls() {
-        this.getRequest('/system/basic/joblevel/').then(resp => {
+        this.getRequest('/system/basic/jobLevel/').then(resp => {
           if (resp) {
             this.jls = resp;
             /*this.jl = {
