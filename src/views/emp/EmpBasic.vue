@@ -26,7 +26,7 @@
                 </div>
                 <div>
                     <el-upload
-                            action="/system/basic/employee/import"
+                            action="/employee/basic/import"
                             :before-upload="beforeUpload"
                             :headers="headers"
                             :on-success="onSuccess"
@@ -828,7 +828,7 @@
                 this.importDataDisabled = true;
             },
             exportData() {
-                this.downloadRequest('/system/basic/employee/export')
+                this.downloadRequest('/employee/basic/export')
             },
             showEditEmpView(data) {
                 this.title = '编辑员工';
