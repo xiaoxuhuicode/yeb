@@ -8,6 +8,7 @@
                 :data="deps"
                 :props="defaultProps"
                 :filter-node-method="filterNode"
+                :expand-on-click-node="false"
                 ref="tree">
         <span class="custom-tree-node" style="display: flex;justify-content: space-between;width: 100%;"
               slot-scope="{node,data}">
@@ -108,7 +109,7 @@
                     if (d.id == id) {
                         deps.splice(i, 1);
                         if (deps.length == 0) {
-                            p.parent = false;
+                            p.isparent = false;
                         }
                         return;
                     } else {
@@ -122,7 +123,7 @@
                     if (d.id == dep.parentId) {
                         d.children = d.children.concat(dep);
                         if (d.children.length > 0) {
-                            d.parent = true;
+                            d.isparent = true;
                         }
                         return;
                     } else {
@@ -134,7 +135,7 @@
                 this.postRequest('/system/basic/department/',
                     this.dep).then(resp => {
                     if (resp) {
-                        this.addDep2Deps(this.deps, resp.obj);
+                        this.addDep2Deps(this.deps, resp.object);
                         this.dialogVisible = false;
                         this.initDep();
                     }
