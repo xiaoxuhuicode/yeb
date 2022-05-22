@@ -14,6 +14,7 @@ import {getRequest} from './utils/api'
 import {deleteRequest} from './utils/api'
 
 import {initMenu} from "./utils/menus";
+import {downloadRequest} from "./utils/download";
 
 // 关闭浏览器控制台关于环境的一个相关提示 默认 false 为关闭
 Vue.config.productionTip = false
@@ -25,6 +26,7 @@ Vue.prototype.postRequest = postRequest;
 Vue.prototype.putRequest = putRequest;
 Vue.prototype.getRequest = getRequest;
 Vue.prototype.deleteRequest = deleteRequest;
+Vue.prototype.downloadRequest=downloadRequest;
 
 // 配置路由导航守卫
 router.beforeEach((to, from, next) => {
